@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>課題詳細 | 課題管理アプリケーション</title>
+</head>
+<body>
+<h1>課題詳細</h1>
+<h2 th:text="${issue.summary}">(summary)</h2>
+<p th:text="${issue.description}">(description)</p>
+<a th:href="@{'/issues/edit/' + ${issue.id}}">修正する</a>
+<form th:object="${issue}" th:method="delete" th:action="@{/issues/{issueId}(issueId=${issue.Id})}">
+    <input type="hidden" th:field="*{id}">
+    <button type="submit">削除する</button>
+</form>
+</body>
+</html>
